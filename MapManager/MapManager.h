@@ -1,10 +1,15 @@
-#include <stdio.h>
 #include "../state.h"
+#include <stdio.h>
+
+#define RowNumber 10
+#define ColNumber 10
+
+
+
 
 //文件读写采用stdio，在main里面freopen
-
 //以左上角为原点 从（1,1）到 （8,8）
-extern int MapManager_Map[10][10];
+extern int MapManager_Map[12][12];
 
 //游戏是否结束标记位
 extern bool MapManager_GameFinished;
@@ -26,13 +31,14 @@ void MapManger_Init();
 int MapManager_Step(int player, int x, int y);
 
 //获取下棋位置列表
-//player：黑骑或者白漆
-//ret 返回坐标的二维数组
+// player：黑骑或者白漆
+// ret 返回坐标的二维数组
 //返回值 ：列表长度，存储从0开始
-int MapManager_GetCanGoList(int player, int ret[32][2]);
+int MapManager_GetCanGoList(int player, int ret[64][2]);
 
 //判断某位置是否能走棋
-bool MapManager_CanGo(int player,unsigned int x,unsigned int y);
+bool MapManager_CanGo(const int player, const unsigned int x,
+                      const unsigned int y);
 
 //落子并完成地图的翻转
 void MapManager_Reverse(int player, int x, int y);
